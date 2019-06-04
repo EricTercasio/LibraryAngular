@@ -1,0 +1,14 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #bookForm="ngForm">
+      <div class="form-group">
+        <label for="isbn">ISBN</label>
+        <input type="text" [(ngModel)]="book.isbn"
+               class="form-control" id="isbn" name="isbn" placeholder="Enter the ISBN #"
+               required #isbn="ngModel">
+        <div [hidden]="!isbn.pristine" class="alert alert-danger">ISBN is required</div>
+      </div>
+      <button type="submit" [disabled]="!bookForm.form.valid" class="btn btn-info">Search</button>
+    </form>
+  </div>
+</div>
