@@ -11,12 +11,15 @@ export class BookService {
   private booksUrl : string;
   private editUrl : string;
   private isbnUrl : string;
+  private removeUrl : string;
   private bookToEdit : Book;
+  private bookPage : Book;
   constructor(private http: HttpClient) {
       this.bookUrl = 'http://localhost:8080/library/book'
       this.booksUrl = 'http://localhost:8080/library/books'
       this.editUrl = 'http://localhost:8080/library/edit/'
       this.isbnUrl = 'http://localhost:8080/library/book/'
+      this.removeUrl = 'http://localhost:8080/library/remove'
   }
 
   public findAllBook(): Observable<Book[]> {
@@ -39,6 +42,22 @@ export class BookService {
   }
   public getBookToEdit(){
     return this.bookToEdit;
+  }
+
+  setBookPage(book: Book) {
+    this.bookPage = book;
+  }
+  public getBookPage(){
+    return this.bookPage;
+  }
+
+  getBooksPage() {
+    return undefined;
+  }
+
+  removeBook(book: Book) {
+    return this.http.post<Book>(this.removeUrl,book);
+
   }
 }
 

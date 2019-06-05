@@ -36,6 +36,7 @@
         <label>
         <input type="radio" [(ngModel)]="book.inStock" value = "false" name = "inStock"> Out Of Stock
         </label>
+        <div [hidden]="error == false" class="alert alert-danger">Invalid information.</div>
       </div>
       <button type="submit" [disabled]="!bookForm.form.valid" class="btn btn-info">Submit</button>
     </form>

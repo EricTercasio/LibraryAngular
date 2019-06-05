@@ -9,6 +9,7 @@ import { BookListComponent } from './book-list/book-list/book-list.component';
 import { BookFormComponent } from './book-form/book-form/book-form.component';
 import { SearchFormComponent } from './search-book-form/search-form/search-form.component';
 import { EditFormComponent } from './edit-book-form/edit-form/edit-form.component';
+import { BookPageComponent } from './book-page/book-page.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { EditFormComponent } from './edit-book-form/edit-form/edit-form.componen
     BookListComponent,
     BookFormComponent,
     SearchFormComponent,
-    EditFormComponent
+    EditFormComponent,
+    BookPageComponent
   ],
   imports: [
     BrowserModule,

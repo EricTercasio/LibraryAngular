@@ -10,14 +10,22 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SearchFormComponent {
 
-  book : Book
+  book : Book;
+  error : boolean = false;
 
-  constructor(private route : ActivatedRoute, private router : Router, private bookService : BookService) {}
+  constructor(private route : ActivatedRoute, private router : Router, private bookService : BookService) {
+    this.book = new Book();
+  }
 
   onSubmit(){
     this.bookService.getBookByISBN(this.book.isbn).subscribe(result =>{
-      this.book = result;
-      this.goToEditForm();
+      if(result == null){
+        this.error = true;
+      }else {
+        this.book = result;
+        this.bookService.setBookToEdit(this.book);
+        this.goToEditForm();
+      }
     });
   }
 
